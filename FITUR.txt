@@ -1,4 +1,5 @@
 fitur
 1
-NODEJS
 REACT
+LARAVEL
+
