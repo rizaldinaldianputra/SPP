@@ -1,4 +1,5 @@
 {{ csrf_field() }}
+
 <div class="form-group">
 <label for="nisn" class="col-sm-2 control-label">NISN</label>
 <div class="col-sm-10">
@@ -29,7 +30,7 @@
 <input type="text" name="no_telp" class="form-control" value="{{ $no_telp ?? '' }}" >
 </div>
 </div>
-21<div class="form-group">
+<div class="form-group">
 <label for="email" class="col-sm-2 control-label">Email</label>
 <div class="col-sm-10">
 <input type="email" name="email" class="form-control" value="{{ $user->email ?? '' }}">
@@ -65,7 +66,7 @@
 </select>
 </div>
 </div>
-22<div class="form-group">
+<div class="form-group">
 <div class="col-sm-offset-2 col-sm-10">
 <input type="submit" class="btn btn-success btn-md" name="simpan" value="Simpan">
 <a href="{{ route('siswa.index') }}" class="btn btn-primary" role="button">Batal</a>

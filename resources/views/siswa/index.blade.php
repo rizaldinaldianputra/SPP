@@ -1,14 +1,15 @@
 @extends('adminlte::page')
-@section('title', 'Kelas')
+@section('title', 'Siswa')
 @section('content_header')
-<h1 class="m-0 text-dark">Manajemen Kelas</h1>
+<?php var_dump('kelas'); ?>
+<h1 class="m-0 text-dark">Manajemen Siswa</h1>
 @stop
 @section('content')
 <div class="row">
 <div class="col-12">
 <div class="card">
 <div class="card-header">
-<a class="btn btn-primary btn-md" href="{{ route('kelas.create') }}">
+<a class="btn btn-primary btn-md" href="{{ route('siswa.create') }}">
 <i class="fa fa-plus"></i> Tambah
 </a>
 </div>
@@ -17,9 +18,11 @@
 <thead>
 <tr>
 <th style="width: 20px">#</th>
-<th>Nama Kelas</th>
-<th>Kompetensi Keahlian</th>
-<th style="width: 10%">Aksi</th>
+<th>NIS</th>
+<th>Nama</th>
+<th>Kelas</th>
+<th>SPP</th>
+<th style="width: 80px">Aksi</th>
 </tr>
 </thead>
 <tbody>
@@ -30,33 +33,39 @@
 {{ $no }}
 </td>
 <td>
-{{ $item->nama_kelas }}
+{{ $item->nis }}
 </td>
 <td>
-{{ $item->kompetensi_keahlian }}
+{{ $item->nama }}
+</td>
+<td>
+{{ $item->kelas->nama_kelas }} - {{ $item->kelas->kompetensi_keahlian }}
+</td>
+<td>
+{{ $item->spp->tahun }} - {{ $item->spp->nominal }}
 </td>
 <td>
 <div class="btn-group">
-<a class="btn btn-success" href="{{ route('kelas.edit', ['kela' => $item->id]) }}">
+<a class="btn btn-success" href="{{ route('siswa.edit', ['siswa'=>$item->nisn]) }}">
 <i class="fas fa-pencil-alt"></i>
 </a>
-<a class="btn btn-primary" onclick="hapus('{{ $item->id }}')" href="#">
+<a class="btn btn-primary" onclick="hapus('{{ $item->nisn }}')" href="#">
 <i class="fas fa-trash"></i>
 </a>
-2</div>
+</div>
 </td>
 </tr>
 <?php $no++;?>
 @empty
 <tr>
-<td colspan="4">
+<td colspan="6">
 Tidak ada data.
 </td>
 </tr>
 @endforelse
 </tbody>
 </table>
-</div
+</div>
 <div class="card-footer clearfix text-right">
 {{ $data->links() }}
 </div>
@@ -76,7 +85,7 @@ Swal.fire(
 )
 </script>
 @endif
-3<script type="text/javascript">
+<script type="text/javascript">
 function hapus(id){
 Swal.fire({
 title: 'Konfirmasi',
@@ -90,7 +99,7 @@ cancelButtonText: 'Batal',
 }).then((result) => {
 if (result.value) {
 $.ajax({
-url: "/kelas/"+id,
+url: "/siswa/"+id,
 type: 'DELETE',
 data: {
 '_token': $('meta[name=csrf-token]').attr("content"),

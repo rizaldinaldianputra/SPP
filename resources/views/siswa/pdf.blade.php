@@ -9,7 +9,7 @@ margin:10px;
 body {
 margin: 10px;
 }
-25table {
+table {
 border-collapse: collapse;
 width: 100%;
 }
@@ -46,7 +46,7 @@ padding: 5px;
 <td>
 {{ $item->nis }}
 </td>
-26<td>
+<td>
 {{ $item->nama }}
 </td>
 <td>

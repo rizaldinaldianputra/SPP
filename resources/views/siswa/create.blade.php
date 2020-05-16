@@ -21,7 +21,7 @@
 <div class="card-header">
 Tambah Siswa
 </div>
-23<div class="card-body">
+<div class="card-body">
 <form class="form-horizontal" action="{{ route('siswa.store') }}" method="post">
 @include('siswa.form')
 </form>

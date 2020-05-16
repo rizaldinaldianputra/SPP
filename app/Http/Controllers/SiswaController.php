@@ -2,26 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Siswa;
-use App\Kelas;
 use App\Spp;
-use Illuminate\Support\Facades\Hash;
+use App\Kelas;
+use App\Siswa;
 use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class SiswaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
         //ambil data max 10
         $data = Siswa::paginate(10);
-
         //membuat variabel tampil yang diisi dengan data
         foreach ($data as $item) {
             $item->kelas = Kelas::find($item->id_kelas);
@@ -32,40 +25,31 @@ class SiswaController extends Controller
         //tampilkan resources/views/siswa/index.blade.php beserta variabel tampil
         return view("siswa.index", $tampil);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
         //tampilkan resources/views/siswa/create.blade.php
         $data['kelas'] = Kelas::get();
         $data['spp'] = Spp::get();
         return view("siswa.create", $data);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
         //validasi inputan
         $this->validate($request, [
-            'nisn' => 'required|unique:siswas',
-            'nis' => 'required|unique:siswas',
-            'nama' => 'required',
-            'alamat' => 'required',
+            'nisn'
+            => 'required|unique:siswas',
+            'nis'
+            => 'required|unique:siswas',
+            'nama'
+            => 'required',
+            'alamat'
+            => 'required',
             'no_telp' => 'required',
             'id_kelas' => 'required',
-            'id_spp' => 'required',
-            'email' => 'required|email|unique:users',
+            'id_spp'
+            => 'required',
+            'email'
+            => 'required|email|unique:users',
             'password' => 'required',
         ]);
         //enkripsi password
@@ -86,27 +70,12 @@ class SiswaController extends Controller
             "Data berhasil disimpan."
         );
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show($siswa)
     {
         //
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($siswa)
     {
-        //
         $data = Siswa::findOrFail($siswa);
         $data->kelas = Kelas::get();
         $data->spp = Spp::get();
@@ -114,17 +83,8 @@ class SiswaController extends Controller
         //tampilkan resources/views/siswa/edit.blade.php
         return view("siswa.edit", $data);
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $siswa)
     {
-        //
         //validasi inputan
         $this->validate($request, [
             'nis'
@@ -162,16 +122,8 @@ class SiswaController extends Controller
             "Data berhasil diubah."
         );
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($siswa)
     {
-        //
         $dataSiswa = Siswa::findOrFail($siswa);
         $dataSiswa->delete();
         $dataUser = User::findOrFail($dataSiswa->id_user);

@@ -2,7 +2,8 @@
 <div class="form-group">
 <label for="nama_kelas" class="col-sm-2 control-label">Nama Kelas</label>
 <div class="col-sm-10">
-<input type="text" name="nama_kelas" class="form-control" value="{{ $nama_kelas ?? ''}}" >
+<input type="text" name="nama_kelas" class="form-control" value="{{ $nama_kelas ?? ''
+}}" >
 </div>
 </div>
 <div class="form-group">

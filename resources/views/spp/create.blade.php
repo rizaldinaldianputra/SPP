@@ -31,17 +31,3 @@ Tambah SPP
 </div>
 @stop
 @section('plugins.Pace', true)
-@section('plugins.DateRangePicker', true)
-@section('js')
-<script type="text/javascript">
-$("#tgl_bayar").daterangepicker({
-autoclose: true,
-todayBtn: true,
-timePicker: true,
-singleDatePicker: true,
-locale: {
-format: 'Y/MM/DD HH:mm:ss'
-}
-});
-</script>
-@stop

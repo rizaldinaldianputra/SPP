@@ -9,7 +9,8 @@
 <div class="card">
 <div class="card-header">
 <a class="btn btn-primary btn-md" href="{{ route('spp.create') }}">
-<i class="fa fa-plus"></i> Tambah</a>
+<i class="fa fa-plus"></i> Tambah
+</a>
 </div>
 <div class="card-body">
 <table class="table table-bordered">
@@ -43,6 +44,7 @@
 <i class="fas fa-trash"></i>
 </a>
 </div>
+</td>
 </tr>
 <?php $no++;?>
 @empty
@@ -74,7 +76,7 @@ Swal.fire(
 )
 </script>
 @endif
-11<script type="text/javascript">
+<script type="text/javascript">
 function hapus(id){
 Swal.fire({
 title: 'Konfirmasi',

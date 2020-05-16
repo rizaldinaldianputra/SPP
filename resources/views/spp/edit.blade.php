@@ -3,7 +3,7 @@
 @section('content_header')
 <h1 class="m-0 text-dark">Manajemen SPP</h1>
 @stop
-14@section('content')
+@section('content')
 <div class="row">
 <div class="col-12">
 @if ($errors->any())
