@@ -88,8 +88,8 @@ class KelasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $kela)
-    {
-        //
+        {
+            //
         //validasi inputan
         $this->validate($request, [
             'nama_kelas' => 'required',
